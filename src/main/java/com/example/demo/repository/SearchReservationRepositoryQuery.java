@@ -9,7 +9,6 @@ import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -27,8 +26,7 @@ public class SearchReservationRepositoryQuery {
                 .join(reservation.user, user).fetchJoin()
                 .join(reservation.item, item).fetchJoin()
                 .where(Expressions.allOf(
-                        validationOfUserIdConditions(userId), validationOfItemIdConditions(itemId)
-                ))
+                        validationOfUserIdConditions(userId), validationOfItemIdConditions(itemId)))
                 .fetch();
     }
 
