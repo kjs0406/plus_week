@@ -1,10 +1,8 @@
 package com.example.demo.entity;
 
-import com.example.demo.status.ReservationStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

@@ -1,8 +1,10 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.Reservation;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 public class ReservationResponseDto {
@@ -18,5 +20,17 @@ public class ReservationResponseDto {
         this.itemName = itemName;
         this.startAt = startAt;
         this.endAt = endAt;
+    }
+
+    public static List<ReservationResponseDto> toListDto(List<Reservation> reservations) {
+        return reservations.stream()
+                .map(reservation -> new ReservationResponseDto(
+                        reservation.getId(),
+                        reservation.getUser().getNickname(),
+                        reservation.getItem().getName(),
+                        reservation.getStartAt(),
+                        reservation.getEndAt()
+                ))
+                .toList();
     }
 }
