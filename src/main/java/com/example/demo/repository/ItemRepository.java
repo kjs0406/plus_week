@@ -6,4 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
+    default Item findByIdOrElseThrow(Long id) {
+        return findById(id).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 item 입니다.")
+        );
+    }
 }
